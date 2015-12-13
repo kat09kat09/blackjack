@@ -6,7 +6,7 @@ class window.HandView extends Backbone.View
   initialize: ->
     @collection.on 'add remove change', => 
       @render()
-      console.log('HandView heard something')
+      console.log('HandView heard add/remove/change')
     @render()
 
   render: ->
@@ -14,5 +14,6 @@ class window.HandView extends Backbone.View
     @$el.html @template @collection
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
-    @$('.score').text @collection.scores()[0]
+    @$('.score').text window.getHighScore(@collection.scores())
+
 

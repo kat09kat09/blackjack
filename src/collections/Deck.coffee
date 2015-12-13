@@ -7,7 +7,21 @@ class window.Deck extends Backbone.Collection
         rank: card % 13
         suit: Math.floor(card / 13)
 
-  dealPlayer: -> new Hand [@pop(), @pop()], @
+    # @on('change', => 
+    #   console.log('changeLength listener called')
+    #   if not @length then trigger('reshuffle')
+    # )
+    
 
-  dealDealer: -> new Hand [@pop().flip(), @pop()], @, true
+  dealPlayer: -> new Hand [@deal().flip(), @deal().flip()], @
+
+  dealDealer: -> new Hand [@deal().flip(), @deal().flip()], @, true
+
+  deal: ->
+    console.log('length', @length)
+    if @length < 26 
+      console.log('reshuffle should not trigger unless length is LT 26')
+      @trigger('reshuffle', @)
+    @pop()
+
 

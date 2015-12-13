@@ -1,5 +1,3 @@
-assert = chai.assert
-
 describe "deck constructor", ->
 
   it "should create a card collection", ->

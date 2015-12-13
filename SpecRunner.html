@@ -9,14 +9,20 @@
     <script src="lib/backbone.js"></script>
     <script src="lib/mocha/mocha.js"></script>
     <script src="lib/chai/chai.js"></script>
+    <script src="lib/sinon/sinon.js"></script>
+    <script src="lib/sinon/sinon-chai.js"></script>
     <script>
       mocha.setup('bdd');
+      var expect = chai.expect;
+      var assert = chai.assert;
       $(function() {
         window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
       })
     </script>
 
     <!-- include source files here... -->
+    <script src="compiled/src/main.js"></script>
+
     <script src="compiled/src/models/Card.js"></script>
     <script src="compiled/src/collections/Hand.js"></script>
     <script src="compiled/src/collections/Deck.js"></script>

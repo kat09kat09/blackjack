@@ -4,12 +4,15 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
-    @add(@deck.pop())
+    @add(@deck.deal())
+
+    if window.getHighScore(@scores()) is 0
+      @stand()
     @last()
 
   stand: ->
     @trigger('stand', @) 
-    console.log('stand got called and trigger event init'); 
+    console.log('Hand.stand called'); 
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1

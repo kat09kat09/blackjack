@@ -1,5 +1,3 @@
-assert = chai.assert
-
 describe 'deck', ->
   deck = null
   hand = null
